@@ -1,0 +1,61 @@
+// .box-full {
+//   @extend %layoutBoxBase;
+//   max-width: $container-width-full;
+// }
+
+// .box-lg {
+//   @extend %layoutBoxBase;
+//   max-width: $container-width-lg;
+// }
+// .box-md {
+//   @extend %layoutBoxBase;
+//   max-width: $container-width-md;
+// }
+.text-ellipsis {
+  @extend %textEllipsis;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1 1 1px;
+  // ie11 will not stretch when row, and basis is 0;
+}
+.f-col {
+  flex-direction: column;
+}
+
+.f-main-end {
+  justify-content: flex-end;
+}
+.f-main-center {
+  justify-content: center;
+}
+.f-main-between {
+  justify-content: space-between;
+}
+
+.f-cross-center {
+  align-items: center;
+}
+.f-all-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.f-self-cross-start {
+  align-self: flex-start;
+}
+.w-full {
+  width: 100%;
+}

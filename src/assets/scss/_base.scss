@@ -1,0 +1,19 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  height: 100%;
+  color: $base;
+  &::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+    background-image: url('~@/assets/img/default_2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0.6);
+    z-index: -1;
+  }
+}

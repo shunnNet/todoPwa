@@ -1,0 +1,44 @@
+// Breakpoint
+
+@mixin mobile {
+  @media screen and(max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media screen and(max-width: $breakpoint-pad) {
+    @content;
+  }
+}
+
+@mixin screen {
+  @media screen and(max-width: $breakpoint-screen) {
+    @content;
+  }
+}
+
+@mixin screen-wide {
+  @media screen and(max-width: $breakpoint-screen-wide) {
+    @content;
+  }
+}
+// device
+
+@mixin touch-device {
+  @media (pointer: "coarse") {
+    @content;
+  }
+}
+@mixin touch-device-mobile {
+  @media screen and (max-width: $breakpoint-mobile) and (pointer: "coarse") {
+    @content;
+  }
+}
+@mixin touch-device-mobile--hover {
+  @media screen and (max-width: $breakpoint-mobile) and (pointer: "coarse") {
+    &:hover {
+      @content;
+    }
+  }
+}

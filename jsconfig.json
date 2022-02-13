@@ -1,0 +1,9 @@
+{
+  "include": ["src/**/*", "tests/unit/modalControl.spec.js", "tests/unit/Modal.spec.js"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

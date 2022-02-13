@@ -1,0 +1,31 @@
+%textEllipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin circle($len){
+  border-radius: 100%;
+  width: $len;
+  height: $len;
+}
+
+%reset-btn {
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  &:focus {
+    outline: 0;
+  }
+}
+
+%gridCenter {
+  display: grid;
+  place-items: center;
+}
+%flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
