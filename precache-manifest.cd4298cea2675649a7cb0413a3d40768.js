@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "70332b22c797fd14c0ae0db392c27f6d",
-    "url": "/todoPwa//todoPwa/manifest.json"
+    "url": "/todoPwa//manifest.json"
   },
   {
     "revision": "8f0ca22c483b96362ae1",
@@ -88,7 +88,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/todoPwa/img/icons/safari-pinned-tab.svg"
   },
   {
-    "revision": "c1ee5b48156c4efe6bc708ff923c2801",
+    "revision": "85e00fd07499f0e3d4383fec98250a28",
     "url": "/todoPwa/index.html"
   },
   {
