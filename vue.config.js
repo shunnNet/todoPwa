@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/todoPwa',
   pwa: {
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
