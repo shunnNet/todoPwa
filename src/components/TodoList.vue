@@ -11,6 +11,7 @@
     :key="item.title"
     :todoItem="item"
     @statusChange="handleStatusChange"
+    @delete="handleDelete"
   />
 </template>
 
@@ -19,35 +20,48 @@ import { computed, reactive, ref } from '@vue/reactivity'
 import TodoItem from '@/components/TodoItem'
 import Divider from '@/components/Divider.vue'
 import { watch, watchEffect } from '@vue/runtime-core'
-import { addTodoItem, getAllTodoItem } from '@/assets/database/database.js'
+import {
+  addTodoItem,
+  getAllTodoItem,
+  deleteTodoItem,
+  modifyCompleteState,
+} from '@/assets/database/database.js'
 // import EditItemForm from '@/components//EditItemForm.vue'
 export default {
+  emits: ['delete'],
   components: {
     TodoItem,
     Divider,
   },
-  setup() {
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  setup(props, { emit }) {
     const handleStatusChange = (item) => {
-      console.log(item.title, ' complete!')
+      modifyCompleteState(item)
     }
-
-    const todoItems = ref([])
-    getAllTodoItem().then((res) => {
-      todoItems.value.push(...res)
-    })
     const stickyItems = computed(() => [
-      ...todoItems.value.filter((item) => item.isComplete),
+      ...props.items.filter((item) => item.isComplete),
     ])
     const nonStickItems = computed(() =>
-      todoItems.value.filter((item) => !item.isComplete)
+      props.items.filter((item) => !item.isComplete)
     )
     watchEffect(() => {
       console.log(stickyItems)
     })
+
+    const handleDelete = (e) => {
+      emit('delete', e)
+      deleteTodoItem(e)
+      console.log('deleted', e.title)
+    }
     return {
-      todoItems,
       stickyItems,
       nonStickItems,
+      handleDelete,
 
       handleStatusChange,
     }

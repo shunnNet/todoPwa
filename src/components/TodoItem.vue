@@ -29,6 +29,7 @@
           true-value="true"
         />
       </label>
+      <button type="button" @click="handleDelete">Delete</button>
     </div>
     <div class="todoItem__sub">
       <Tag :theme="tag.theme" v-for="tag in todoItem.tags" :key="tag.id">
@@ -43,6 +44,7 @@ import { computed } from 'vue'
 import Tag from '@/components/Tag.vue'
 import TodoChecker from './TodoChecker.vue'
 export default {
+  emits: ['delete', 'detail', 'statusChange'],
   props: {
     todoItem: {
       required: true,
@@ -67,12 +69,17 @@ export default {
       props.todoItem.sticky = !props.todoItem.sticky
       emit('stick', props.todoItem)
     }
+    const handleDelete = () => {
+      console.log('item')
+      emit('delete', props.todoItem)
+    }
 
     return {
       status,
       handleChange,
       handleClick,
       handleStick,
+      handleDelete,
     }
   },
 }

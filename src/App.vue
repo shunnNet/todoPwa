@@ -4,12 +4,19 @@
     <TodoMenu class="layout-menu" />
     <main class="layout-main">
       <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-      <TodoList />
+      <TodoList @delete="handleDelete" :items="todoItems" />
 
-      <Dialog v-model="isShowEditItemForm" ref="modal">
+      <Dialog v-model="isShowEditItemForm">
         <template v-slot:title> 新增待辦事項 </template>
         <template v-slot="{ close }">
-          <EditItemForm @submit="handleSubmit($event)"></EditItemForm>
+          <EditItemForm
+            @submit="
+              ($event) => {
+                handleSubmit($event)
+                close()
+              }
+            "
+          />
           <button @click="toggleEditItemForm(false)">close</button>
         </template>
       </Dialog>
@@ -26,7 +33,12 @@ import EditItemForm from '@/components/form/EditItemForm.vue'
 import { ref } from 'vue'
 import Dialog from './components/modal/Dialog.vue'
 import SimpleModal from '@/components/modal/SimpleModal.vue'
-import { addTodoItem, getAllTodoItem } from '@/assets/database/database.js'
+import {
+  addTodoItem,
+  getAllTodoItem,
+  getAllKeys,
+  deleteTodoItem,
+} from '@/assets/database/database.js'
 import TodoMenu from './layouts/TodoMenu.vue'
 import DetailDrawer from './layouts/DetailDrawer.vue'
 import CirclePlus from './components/CirclePlus.vue'
@@ -38,15 +50,39 @@ export default {
     const toggleEditItemForm = (status = false) => {
       isShowEditItemForm.value = status
     }
-    const handleSubmit = (form) => {
-      addTodoItem(form)
+    const handleSubmit = async (form) => {
+      await addTodoItem(form)
+      todoItems.value = []
+
+      getAllTodoItem().then((res) => {
+        console.log(res)
+        todoItems.value.push(...res)
+      })
     }
+    const handleDelete = (item) => {
+      console.log(item)
+      deleteTodoItem(item)
+      todoItems.value = []
+      getAllTodoItem().then((res) => {
+        console.log(res)
+        todoItems.value.push(...res)
+      })
+    }
+    getAllKeys().then((res) => {
+      console.log(res)
+    })
+
+    const todoItems = ref([])
+    getAllTodoItem().then((res) => {
+      console.log(res)
+      todoItems.value.push(...res)
+    })
 
     return {
       isShowEditItemForm,
-
+      handleDelete,
       toggleEditItemForm,
-
+      todoItems,
       handleSubmit,
     }
   },

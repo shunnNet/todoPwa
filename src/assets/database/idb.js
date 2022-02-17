@@ -1,18 +1,13 @@
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
-const version = 1
-const NAME = 'todoList'
+const version = 2
+const NAME = 'TodoList'
 
 export const database = openDB(NAME, version, {
   upgrade(database, oldVersion, newVersion, transaction) {
-    const objectStore = database.createObjectStore(NAME, {
-      autoIncrement: true,
+    database.createObjectStore(NAME, {
+      keyPath: 'id',
     })
-
-    objectStore.createIndex('done', 'done', { unique: false })
-    objectStore.createIndex('title', 'title', { unique: false })
-    objectStore.createIndex('seal', 'seal', { unique: false })
-    objectStore.createIndex('date', 'date', { unique: false })
   },
 })
 
@@ -26,6 +21,11 @@ export async function put(data) {
   const db = await database
   await db.put(NAME, data)
 }
+
+export async function del(key) {
+  return (await database).delete(NAME, key)
+}
+
 export async function get(key) {
   // insert only method
   const db = await database
@@ -43,3 +43,7 @@ export async function getAllFromIndex(key, value) {
 }
 
 export default database
+
+export async function keys() {
+  return (await database).getAllKeys(NAME)
+}
