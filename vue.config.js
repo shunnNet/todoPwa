@@ -6,7 +6,7 @@ module.exports = {
       swSrc: 'src/service-worker.js',
       exclude: /\.js$/,
     },
-    manifestPath: '/todoPwa/manifest.json',
+    manifestPath: '/manifest.json',
   },
   css: {
     loaderOptions: {
