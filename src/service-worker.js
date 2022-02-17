@@ -18,7 +18,7 @@ workbox.routing.registerRoute(
     cacheName: 'pages',
     plugins: [
       // Ensure that only requests that result in a 200 status are cached
-      new CacheableResponsePlugin({
+      new workbox.cacheableResponse.CacheableResponsePlugin({
         statuses: [200],
       }),
     ],
