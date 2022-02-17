@@ -1,9 +1,9 @@
-importScripts("/todoPwa/precache-manifest.cd4298cea2675649a7cb0413a3d40768.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/todoPwa/precache-manifest.7ea7a03c157a5bb168904d76a0c9b2de.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 workbox.precaching.precacheAndRoute([
   {
     revision: '17ecfaee522eaf5b3ad9c9aa1b2973cc',
-    url: '/manifest.json',
+    url: '/todoPwa/manifest.json',
   },
 ])
 

@@ -1,9 +1,5 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "70332b22c797fd14c0ae0db392c27f6d",
-    "url": "/todoPwa//manifest.json"
-  },
-  {
     "revision": "8f0ca22c483b96362ae1",
     "url": "/todoPwa/css/app.86b21515.css"
   },
@@ -88,7 +84,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/todoPwa/img/icons/safari-pinned-tab.svg"
   },
   {
-    "revision": "85e00fd07499f0e3d4383fec98250a28",
+    "revision": "1964612b63d6033bec4b5bf6339e373b",
     "url": "/todoPwa/index.html"
   },
   {
@@ -102,6 +98,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "253c3975d7c24b215a39",
     "url": "/todoPwa/js/chunk-vendors.d96dc660.js.map"
+  },
+  {
+    "revision": "70332b22c797fd14c0ae0db392c27f6d",
+    "url": "/todoPwa/manifest.json"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
